@@ -1,23 +1,50 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <title>{% block title '' %} - SturdyUmbrella</title>
 
-        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-            _gaq.push(['_trackPageview']);
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
+        <!-- Custom CSS -->
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        {% block content %}{% endblock %}
+        <div class="site-wrapper">
+
+            <div class="site-wrapper-inner">
+
+                <div class="cover-container">
+
+                    <header class="masthead clearfix">
+                        <div class="inner">
+                            <h3 class="masthead-brand">SturdyUmbrella</h3>
+                            <nav class="nav nav-masthead">
+                                <a class="nav-link active" href="#">Home</a>
+                                <a class="nav-link" href="#">Features</a>
+                                <a class="nav-link" href="#">Contact</a>
+                            </nav>
+                        </div>
+                    </header>
+
+                    <main role="main" class="inner cover">
+                        {% block content %}{% endblock %}
+                    </main>
+
+                    <footer class="mastfoot">
+                        <div class="inner">
+                            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                        </div>
+                    </footer>
+
+                </div>
+
+            </div>
+
+        </div>
     </body>
 </html>
