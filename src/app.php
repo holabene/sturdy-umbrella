@@ -5,6 +5,8 @@ use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
+use Silex\Provider\DoctrineServiceProvider;
+use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
@@ -17,5 +19,26 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 
     return $twig;
 });
+
+$app->register(new DoctrineServiceProvider(), [
+    'db.options' => [
+        'driver' => 'pdo_sqlite',
+        'path'   => __DIR__.'/../var/doctrine/app.db'
+    ]
+]);
+
+$app->register(new DoctrineOrmServiceProvider(), [
+    'orm.proxies_dir' => __DIR__.'/../var/doctrine',
+    'orm.em.options'  => [
+        'mappings' => [
+            [
+                'type'      => 'annotation',
+                'namespace' => 'SturdyUmbrella\Entity',
+                'path'      => __DIR__.'/Entity',
+                'use_simple_annotation_reader' => false
+            ]
+        ]
+    ]
+]);
 
 return $app;
